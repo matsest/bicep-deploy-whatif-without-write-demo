@@ -164,6 +164,14 @@ This will ensure that we can only run actual deployments from the `main` :lock:
 
 You can also run this workflow manually using a workflow dispatch run.
 
+Status check:
+
+![Status check in PR](./assets/pr-ok.png)
+
+Example output:
+
+![What-if example output](./assets/whatifresults.png)
+
 > [!NOTE]
 > Note that when running the 'Azure What-If' workflow it runs in the `Azure-PR` environment, which uses a managed identity which does not have write permissions.
 
