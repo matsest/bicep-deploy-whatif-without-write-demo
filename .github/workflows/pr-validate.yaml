@@ -1,0 +1,36 @@
+name: Azure What-If
+on:
+    pull_request:
+        types: [opened, synchronize]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    environment: Azure-PR
+    runs-on: ubuntu-2404
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Deployment
+        uses: azure/bicep-deploy@v2
+        with:
+          type: deployment
+          operation: whatIf
+          validation-level: providerNoRbac
+          name: demo-deployment
+          location: norwayeast
+          scope: resourceGroup
+          resource-group-name: demo-whatif-gh-rg
+          template-file: ./bicep/demo/main.bicep
