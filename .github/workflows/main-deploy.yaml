@@ -34,7 +34,6 @@ jobs:
           operation: create
           name: demo-deployment
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          location: norwayeast
           scope: resourceGroup
           resource-group-name: demo-whatif-gh-rg
           template-file: ./bicep/demo/main.bicep
