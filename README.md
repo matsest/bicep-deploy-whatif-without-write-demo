@@ -35,7 +35,7 @@ The following resources will be set up in this demo:
 
 **GitHub:**
 - A PR environment with environment secrets for the PR user-assigned identity
-- A main environment with environment secrest for the deploy user-assigned identity, including branch protection to only allow the main branch.
+- A main environment with environment secrest for the deploy user-assigned identity, including branch protection to only allow access from the main branch.
 
 ```mermaid
 ---
@@ -66,8 +66,8 @@ flowchart LR;
 
 After this is set up two separate workflows referring to the two environments will be used:
 
-1. [pr-validate-yaml](./.github/workflows/pr-validate.yaml): triggers upon pull requests and runs a what-if resource group deployment against the Azure resource group
-2. [main-deploy.yaml](./.github/workflows/main-deploy.yaml): triggers upon push to main branch and runs a resource group deployment against the Azure resource group
+1. [pr-validate-yaml](./.github/workflows/pr-validate.yaml): triggers upon pull requests and runs a what-if resource group deployment against the Azure resource group - using the dedicated managed identity which does *not* have write permissions
+2. [main-deploy.yaml](./.github/workflows/main-deploy.yaml): triggers upon push to main branch and runs a resource group deployment against the Azure resource group - using the other managed identity which has write permissions
 
 These workflows uses the [Azure/login](https://github.com/Azure/login) and [Azure/bicep-deploy](https://github.com/Azure/bicep-deploy) actions.
 
