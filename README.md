@@ -14,11 +14,12 @@ for Az.Resources 7.10. As of June 1st 2025 it's not even released for Azure CLI 
 
 ## Demo setup
 
-The following resources will be set up:
+The following resources will be set up in this demo:
 
 **Azure:**
 - A resource group (for demo purposes, to scope the role assignments used)
 - Two user-assigned managed identities - one with only Reader permissions and one with Contributor permissions
+- A Custom RBAC role that is similar to the Reader role, but also has  `deployments/whatIf/action` and `deployments/validate/action`.
 
 **GitHub:**
 - A PR environment with environment secrets for the PR user-assigned identity
@@ -30,7 +31,7 @@ title: Demo Environment
 ---
 flowchart LR;
     subgraph Azure;
-        Reader["PR Managed Identity"]--Reader role-->RG["Azure Resource Group"];
+        Reader["PR Managed Identity"]--Custom What-if role-->RG["Azure Resource Group"];
         Deployer["Main Managed Identity"]--Owner role-->RG;
     end;
 
@@ -57,7 +58,6 @@ After this is set up two separate workflows referring to the two environments wi
 2. [main-deploy.yaml](./.github/workflows/main-deploy.yaml): triggers upon push to main branch and runs a resource group deployment against the Azure resource group
 
 These workflows uses the [Azure/login](https://github.com/Azure/login) and [Azure/bicep-deploy](https://github.com/Azure/bicep-deploy) actions.
-
 
 ## Prerequisities
 
