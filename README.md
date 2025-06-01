@@ -44,7 +44,7 @@ title: Demo Environment
 flowchart LR;
     subgraph Azure;
         Reader["PR Managed Identity"]--Custom What-if role-->RG["Azure Resource Group"];
-        Deployer["Main Managed Identity"]--Owner role-->RG;
+        Deployer["Main Managed Identity"]--Contributor Role-->RG;
     end;
 
     subgraph GitHub;
@@ -85,7 +85,7 @@ To be able to set this up you need to [fork this repository](https://github.com/
 
 #### Azure
 
-To set up the environment in your Azure subscription open a terminal locally and run:
+To set up the environment in your Azure subscription open a terminal locally and run to deploy the [prereqs Bicep file](./bicep/prereqs/main.bicep):
 
 ```pwsh
 Connect-AzAccount # Select the correct subscription after logging in
@@ -196,6 +196,8 @@ Remove-AzResourceGroup -Name "demo-whatif-gh-rg"
 ## Considerations
 
 - There are still other fundamental issues with what-if (noise, resource provider support nested modules limitations) that needs improvements before a Bicep what-if is really comparable to a Terraform Plan. Kudos to the Bicep team for pushing and doing a lot of improvements on this area!
+
+- There might be more improvements coming soon to do more secure PR level validations with Bicep snapshop. See a demo repo here: https://github.com/anthony-c-martin/bicep-snapshot-demo.
 
 - If you want to simulate the same what-if behavior when running locally or something else than [Azure/bicep-deploy](https://github.com/Azure/bicep-deploy) you will need to add the `-ValidationLevel ProviderNoRbac` argument to the deployment cmdlet (see [docs](https://learn.microsoft.com/en-us/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-14.0.0#-validationlevel) for `New-AzResourceGroupDeployment`).
 
