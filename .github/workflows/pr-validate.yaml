@@ -1,16 +1,19 @@
 name: Azure What-If
 on:
-    pull_request:
-        types: [opened, synchronize]
+  pull_request:
+      types: [opened, synchronize]
+      paths:
+        - bicep/**
+  workflow_dispatch:
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  deploy:
+  what-if:
     environment: Azure-PR
-    runs-on: ubuntu-2404
+    runs-on: ubuntu-24.04
     steps:
 
       - name: Checkout repository
