@@ -23,7 +23,7 @@ For Az.Resources 7.10, if we dig into the documentation for the new parameter, w
 Since there are few examples of using this and it's not very well documented elsewhere in the [what-if documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if?tabs=azure-powershell%2CCLI) regarding what permissions are needed and such - let's see how it works!
 
 > [!NOTE]
-> As of June 1st, 2025, it's not released for Azure CLI (will be released [in the upcoming 2.74 according to MS](https://github.com/Azure/arm-template-whatif/issues/135#issuecomment-2920160715).)
+> As of July 3rd, 2025, it's not released for Azure CLI (will be released [in the upcoming 2.76 according to MS](https://github.com/Azure/arm-template-whatif/issues/135#issuecomment-2920160715)).
 
 ## Demo setup
 
