@@ -23,7 +23,7 @@ For Az.Resources 7.10, if we dig into the documentation for the new parameter, w
 Since there are few examples of using this and it's not very well documented elsewhere in the [what-if documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if?tabs=azure-powershell%2CCLI) regarding what permissions are needed and such - let's see how it works!
 
 > [!NOTE]
-> As of July 3rd, 2025, it's not released for Azure CLI (will be released [in the upcoming 2.76 according to MS](https://github.com/Azure/arm-template-whatif/issues/135#issuecomment-2920160715)).
+> Since [Azure CLI 2.76.0](https://github.com/MicrosoftDocs/azure-docs-cli/blob/main/docs-ref-conceptual/Latest-version/release-notes-azure-cli.md#august-05-2025) you can use a equivalent argument in Azure CLI with the `--validation-level` argument, which has the same values as the PowerShell parameter. See [docs](https://learn.microsoft.com/en-us/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-what-if) for `az deployment group what-if`.
 
 ## Demo setup
 
