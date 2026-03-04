@@ -206,6 +206,8 @@ Remove-AzResourceGroup -Name "demo-whatif-gh-rg"
 
 - There might be more improvements coming soon to do more secure PR-level validations with Bicep snapshots. See a demo repo here: https://github.com/anthony-c-martin/bicep-snapshot-demo.
 
+- In [Bicep 0.41.2](https://github.com/Azure/bicep/releases/tag/v0.41.2) the `snapshot` functionality is now GA, which can help in assessing diffs without relying on the what-if mechanism. See [docs](https://github.com/Azure/bicep/blob/v0.41.2/docs/experimental/snapshot-command.md) and a [YouTube walkthrough](https://www.youtube.com/watch?v=84jVnQI-0Ak) for more information.
+
 - If you want to simulate the same what-if behavior when running locally or something else than [Azure/bicep-deploy](https://github.com/Azure/bicep-deploy), you will need to add the `-ValidationLevel ProviderNoRbac` argument to the deployment cmdlet (see [docs](https://learn.microsoft.com/en-us/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-14.0.0#-validationlevel) for `New-AzResourceGroupDeployment`).
 
 ## LICENSE
