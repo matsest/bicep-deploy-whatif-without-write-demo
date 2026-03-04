@@ -20,7 +20,13 @@ For Az.Resources 7.10, if we dig into the documentation for the new parameter, w
 >
 > Sets the validation level for validate/what-if. ValidationLevel can be Template (Skips provider validation), Provider (Performs full validation), or **ProviderNoRbac (Performs full validation using RBAC read checks instead of RBAC write checks for provider validation)**.
 
-Since there are few examples of using this and it's not very well documented elsewhere in the [what-if documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if?tabs=azure-powershell%2CCLI) regarding what permissions are needed and such - let's see how it works!
+There is now also a more verbose explanation on the [what-if documentation]:
+
+> - **Provider (default)**: Performs full validation, including template syntax, resource definitions, dependencies, and permission checks to ensure you have sufficient permissions to deploy all resources in the template.
+> - **ProviderNoRbac**: Performs full validation of the template and resources, similar to Provider, but only checks for read permissions on each resource instead of full deployment permissions. This is useful when you want to validate resource configurations without requiring full access.
+> - **Template**: Performs static validation only, checking template syntax and structure while skipping preflight checks (for example, resource availability) and permission checks. This is less thorough, potentially missing issues that could cause deployment failures.
+
+Since there are few examples of using this and it's not very well documented in the [what-if documentation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if?tabs=azure-powershell%2CCLI) regarding what permissions are needed - let's see how it works!
 
 > [!NOTE]
 > Since [Azure CLI 2.76.0](https://github.com/MicrosoftDocs/azure-docs-cli/blob/main/docs-ref-conceptual/Latest-version/release-notes-azure-cli.md#august-05-2025) you can use a equivalent argument in Azure CLI with the `--validation-level` argument, which has the same values as the PowerShell parameter. See [docs](https://learn.microsoft.com/en-us/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-what-if) for `az deployment group what-if`.
